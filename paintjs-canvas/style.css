@@ -5,31 +5,71 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px 0;
+    padding: 25px;
+    overflow: hidden;
 }
 
 .canvas {
-    height: 500px;
-    width: 500px;
+    height: 720px;
+    width: 1280px;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-    padding-top: 50px;
+}
+
+.notice {
+    display: none;
+    text-align: center;
+    line-height: 100vh;
+    font-size: 24px;
+}
+
+@media screen and (min-width:1330px) {
+    .canvas {
+        height: 720px;
+        width: 1280px;
+    }
+}
+
+@media screen and (min-width:770px) and (max-width:1330px) {
+    .canvas {
+        height: 720px;
+        width: 720px;
+    }
+}
+
+@media screen and (max-width:770px) {
+    body {
+        padding: 0;
+    }
+    .canvas {
+        display: none;
+    }
+    .notice {
+        display: block;
+    }
+    .controls {
+        display: none;
+    }
 }
 
 .controls {
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.controls .controlsRange {
-    margin-bottom: 30px;
+.controls .controlsOthers {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
+.controls .controlsRange,
 .controls .controlsBtns {
-    margin-bottom: 30px;
+    margin: 30px 10px;
+    ;
 }
 
 .controlsBtns button {
@@ -62,4 +102,5 @@ body {
     border-radius: 25px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    margin: 0 2px;
 }
