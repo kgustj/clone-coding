@@ -1,0 +1,113 @@
+:root {
+    --mainTextColor: #ecf0f1;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: #34495e;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: var(--mainTextColor);
+}
+
+h1 {
+    font-weight: 100;
+    font-size: 100px;
+    margin: 180px 0 0 0;
+    padding: 0;
+    text-align: center;
+}
+
+input {
+    background-color: transparent;
+    color: white;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+    border-bottom: solid var(--mainTextColor);
+    text-align: center;
+    font-size: 30px;
+}
+
+input:focus {
+    outline: none;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+input::placeholder {
+    color: white;
+    letter-spacing: .3px;
+}
+
+.toDoForm {
+    text-align: center;
+}
+
+.form,
+.greetings {
+    display: none;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 300;
+    padding: 0 0 100px 0;
+    margin: 0;
+}
+
+.showing {
+    display: block;
+}
+
+.toDoList {
+    width: 280px;
+    margin: 5px auto;
+    padding: 0;
+}
+
+.toDoList li {
+    list-style: circle outside;
+    font-size: auto;
+    padding: 0 5px;
+}
+
+.toDoList li span {
+    padding: 0 5px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.weather {
+    position: absolute;
+    bottom: 2%;
+    right: 3%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    animation: fadeIn 0.5s linear;
+}
