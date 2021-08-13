@@ -1,0 +1,9 @@
+extends base
+include mixins/movie
+
+block content
+    h2 Welcome!
+    each movie in movies
+        +video(movie)
+    else
+        li Sorry nothing found.
