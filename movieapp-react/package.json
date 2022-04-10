@@ -1,49 +1,49 @@
 {
-  "name": "clone_movieapp",
-  "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^14.0.4",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-scripts": "5.0.0",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "description": "Clone Movie App with ReactJS for Nomad Coder! Start : 2021.06.03",
-  "main": "index.js",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hnklcbs/clone-movieapp-react.git"
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/hnklcbs/clone-movieapp-react/issues"
-  },
-  "homepage": "https://github.com/hnklcbs/clone-movieapp-react#readme"
+    "name": "clone_movieapp",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Clone Movie App with ReactJS for Nomad Coder! Start : 2021.06.03",
+    "main": "index.js",
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hnklcbs/clone-movieapp-react.git"
+    },
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/hnklcbs/clone-movieapp-react/issues"
+    },
+    "homepage": "https://github.com/hnklcbs/clone-movieapp-react#readme",
+    "dependencies": {
+        "@testing-library/jest-dom": "^5.12.0",
+        "@testing-library/react": "^13.0.0",
+        "@testing-library/user-event": "^14.0.4",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0",
+        "react-scripts": "5.0.0",
+        "web-vitals": "^2.1.4"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }
