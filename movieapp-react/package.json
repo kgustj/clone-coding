@@ -2,7 +2,7 @@
     "name": "clone_movieapp",
     "version": "1.0.0",
     "private": true,
-    "description": "Clone Movie App with ReactJS for Nomad Coder! Start : 2021.06.03",
+    "description": "Clone Movie App with ReactJS for Nomad Coder!",
     "main": "index.js",
     "devDependencies": {},
     "repository": {
