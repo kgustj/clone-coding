@@ -2,11 +2,12 @@ extends base
 
 block content
     if errorMessage
-        span=errorMessage
+        p
+            mark=errorMessage
     form(method="POST", action="/videos/upload", enctype="multipart/form-data")
-        label(for=video) Video File
+        label(for="video") Video File
         input(type="file", accept="video/*", required, id="video", name="video")
-        input(placeholder="Title", required, type="text", name="title", minLength=1, maxLength=20)
-        input(placeholder="Description", required, type="text", name="description", minLength=20, maxLength=150) 
-        input(placeholder="Hashtags, separated by comma.", required, type="text", name="hashtags")
+        input(placeholder="Title", required, type="text", name="title", maxLength=20)
+        input(placeholder="Description (20~200 characters)", required, type="text", name="description", minLength=20, maxLength=200)
+        input(placeholder="Hashtags, separated by comma", required, type="text", name="hashtags")
         input(type="submit", value="Upload Video")

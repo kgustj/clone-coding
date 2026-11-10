@@ -1,18 +1,19 @@
 const path = require("path");
 
 module.exports = {
-    // entry: source code
-    entry: "./src/client/js/main.js",
-    mode: "development", // <-> "production"
+    // 브라우저에서 실행할 코드: src/client/js → assets/js
+    entry: {
+        videoPlayer: "./src/client/js/videoPlayer.js",
+    },
+    mode: process.env.NODE_ENV === "production" ? "production" : "development",
     output: {
-        filename: "main.js",
-        // __dirname: JS에서 제공하는 폴더까지의 절대 경로
+        filename: "[name].js",
         path: path.resolve(__dirname, "assets", "js"),
+        clean: true,
     },
     module: {
         rules: [
             {
-                // 모든 JS 파일에 적용
                 test: /\.js$/,
                 use: {
                     loader: "babel-loader",

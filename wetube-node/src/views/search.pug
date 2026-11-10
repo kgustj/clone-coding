@@ -1,10 +1,12 @@
-extends base.pug
+extends base
 include mixins/video
 
 block content
-    form(method=GET)
-        input(placeholder="Search by Title", required, type="text", name="keyword")
-        input(type="submit" value="Search Now")
-    div
+    form(method="GET")
+        input(placeholder="Search by title", required, type="text", name="keyword", value=keyword)
+        input(type="submit", value="Search")
+    if keyword
         each video in videos
             +video(video)
+        else
+            p No videos found for "#{keyword}".

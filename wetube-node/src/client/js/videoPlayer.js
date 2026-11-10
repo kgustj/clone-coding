@@ -1,56 +1,68 @@
 const video = document.querySelector("video");
 const playBtn = document.getElementById("play");
 const muteBtn = document.getElementById("mute");
-const currenTime = document.getElementById("currenTime");
+const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
 const volumeRange = document.getElementById("volume");
 
 let volumeValue = 0.5;
 video.volume = volumeValue;
 
-const handlePlay = (e) => {
+const handlePlay = () => {
     if (video.paused) {
         video.play();
     } else {
         video.pause();
     }
-    playBtn.innerText = video.paused ? "play" : "Pause";
 };
 
-const handleMute = (e) => {
-    if (video.muted) {
-        video.muted = false;
-    } else {
-        video.muted = true;
-    }
+const handlePlayState = () => {
+    playBtn.innerText = video.paused ? "Play" : "Pause";
+};
+
+const handleMute = () => {
+    video.muted = !video.muted;
     muteBtn.innerText = video.muted ? "Unmute" : "Mute";
     volumeRange.value = video.muted ? 0 : volumeValue;
 };
 
 const handleVolumeChange = (event) => {
-    const {
-        target: { value },
-    } = event;
+    const { value } = event.target;
     if (video.muted) {
         video.muted = false;
         muteBtn.innerText = "Mute";
     }
-    volumeValue = value;
-    video.volume = value;
+    volumeValue = Number(value);
+    video.volume = volumeValue;
 };
 
-const formatTime = (seconds) => new Date(seconds * 1000).toISOString().substr(11, 8);
+// 초 → 00:00:00
+const formatTime = (seconds) => new Date(seconds * 1000).toISOString().substring(11, 19);
 
 const handleLoadedMetadata = () => {
     totalTime.innerText = formatTime(Math.floor(video.duration));
 };
 
 const handleTimeUpdate = () => {
-    currenTime.innerText = formatTime(Math.floor(video.currentTime));
+    currentTime.innerText = formatTime(Math.floor(video.currentTime));
+};
+
+// 끝까지 보면 조회수 +1
+const handleEnded = () => {
+    const { id } = video.dataset;
+    fetch(`/api/videos/${id}/views`, { method: "POST" });
 };
 
 playBtn.addEventListener("click", handlePlay);
 muteBtn.addEventListener("click", handleMute);
 volumeRange.addEventListener("input", handleVolumeChange);
+video.addEventListener("play", handlePlayState);
+video.addEventListener("pause", handlePlayState);
 video.addEventListener("loadedmetadata", handleLoadedMetadata);
 video.addEventListener("timeupdate", handleTimeUpdate);
+video.addEventListener("ended", handleEnded);
+
+// 스크립트보다 메타데이터가 먼저 로드된 경우
+if (video.readyState >= 1) {
+    handleLoadedMetadata();
+}

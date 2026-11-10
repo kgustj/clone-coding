@@ -1,25 +1,32 @@
 extends base
 
 block content
-    video(controls src=`/${video.fileUrl}` id="video" data-id=video._id)
     div
-        p=video.description
-        small=video.createdAt
-    div
-        small Uploaded by 
-            a(href=`/users/${video.owner._id}`) #{video.owner.name}
-        br
-        small #{video.meta.views} views.
-    if String(video.owner._id) === loggedInUser._id
-        a(href=`${video.id}/edit`) Edit Video &rarr;
-        br
-        a(href=`${video.id}/delete`) Delete Video &rarr;
-    script.
-        const video = document.getElementById("video");
-        const endedHandler = () => {
-            const { id } = video.dataset;
-            fetch(`/api/videos/${id}/views`, {
-                method: "POST",
-            });
-        };
-        video.addEventListener("ended", endedHandler);
+        video(src=video.fileUrl, data-id=video._id, width="700")
+        div
+            button#play Play
+            button#mute Mute
+            input#volume(type="range", step="0.1", min="0", max="1", value="0.5")
+            span
+                span#currentTime 00:00:00
+                |  / 
+                span#totalTime 00:00:00
+    p=video.description
+    if video.hashtags.length
+        p
+            each hashtag in video.hashtags
+                small #{hashtag} 
+    small Uploaded by 
+        if video.owner
+            a(href=`/users/${video.owner._id}`)=video.owner.name
+        else
+            | (deleted user)
+        |  · #{video.meta.views} views · #{video.createdAt.toLocaleDateString("ko-KR")}
+    if video.owner && String(video.owner._id) === String(loggedInUser._id)
+        p
+            a(href=`/videos/${video._id}/edit`) Edit Video &rarr;
+            br
+            a(href=`/videos/${video._id}/delete`) Delete Video &rarr;
+
+block scripts
+    script(src="/static/js/videoPlayer.js")

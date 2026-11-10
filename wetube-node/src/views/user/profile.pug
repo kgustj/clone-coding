@@ -1,9 +1,13 @@
 extends ../base
 include ../mixins/video
 
-block content 
-    h1 
+block content
+    if user.avatarUrl
+        img(src=user.avatarUrl, width="100", height="100")
+    if user.location
+        p=user.location
+    h3 Videos
     each video in user.videos
         +video(video)
     else
-        li Sorry nothing found.
+        p No videos yet.

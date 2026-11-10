@@ -1,8 +1,11 @@
 import express from "express";
 import { registerView } from "../controllers/videoController";
+import { checkObjectId } from "../middlewares";
 
 const apiRouter = express.Router();
 
-apiRouter.post("/videos/:id([0-9a-f]{24})/views", registerView);
+apiRouter.param("id", checkObjectId);
+
+apiRouter.post("/videos/:id/views", registerView);
 
 export default apiRouter;

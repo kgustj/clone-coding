@@ -5,8 +5,8 @@ import MongoStore from "connect-mongo";
 import rootRouter from "./routers/rootRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
-import { localsMiddleware } from "./middlewares";
 import apiRouter from "./routers/apiRouter";
+import { localsMiddleware, errorMiddleware } from "./middlewares";
 
 const app = express();
 const logger = morgan("dev");
@@ -32,5 +32,7 @@ app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
 app.use("/api", apiRouter);
+app.use((req, res) => res.status(404).render("404", { pageTitle: "Page not found" }));
+app.use(errorMiddleware);
 
 export default app;
