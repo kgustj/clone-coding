@@ -1,9 +1,0 @@
-mixin movie(movie)
-    div
-        h4
-            a(href=`movie/${movie.id}`)=movie.title
-        p=movie.description
-        each hashtag in movie.hashtags
-            li=hashtag 
-        small=movie.createdAt
-        hr        

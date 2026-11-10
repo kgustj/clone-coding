@@ -1,9 +1,0 @@
-extends base
-
-block content
-    div
-        p=movie.description
-        small=movie.createdAt
-    a(href=`${movie.id}/edit`) Edit Movie &rarr;
-    br
-    a(href=`${movie.id}/delete`) Delete Movie &rarr;

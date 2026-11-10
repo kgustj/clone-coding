@@ -1,9 +1,0 @@
-extends base
-
-block content
-    h4 Update Movie
-    form(method="POST")
-        input(placeholder="Title", required, type="text", name="title", minLength=1, maxLength=20, value=movie.title)
-        input(placeholder="Summary", required, type="text", name="summary", minLength=20, maxLength=150, value=movie.summary) 
-        input(placeholder="Genres, separated by comma.", required, type="text", name="genres", value=movie.genres.join())
-        input(type="submit", value="Upload Movie")
